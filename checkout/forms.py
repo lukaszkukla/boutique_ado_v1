@@ -1,10 +1,10 @@
-from socket import fromshare
 from django import forms
 from .models import Order
 
 
 class OrderForm(forms.ModelForm):
     class Meta:
+        model = Order
         fields = (
             'full_name',
             'email',
@@ -19,7 +19,7 @@ class OrderForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classess, remove auto-generated
+        Add placeholders and classes, remove auto-generated
         labels and set autofocus on first field
         """
         super().__init__(*args, **kwargs)
@@ -42,5 +42,5 @@ class OrderForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'sripe-style-input'
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
