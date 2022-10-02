@@ -1,3 +1,5 @@
+from email import message
+from itertools import product
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
@@ -90,9 +92,10 @@ def add_product(request):
     }
 
     return render(request, template, context)
-    
+
+
 def edit_product(request, product_id):
-    """Edit and update a product"""
+    """Edit and update a product in the store"""
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -113,3 +116,11 @@ def edit_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+def delete_product(request, product_id):
+    """Delete product form the store"""
+    product = get_object_or_404(Product, pk=product_id)
+    product.delete()
+    messages.success(request, f'Successfully deleted product {product.name}!')
+    return redirect(reverse('products'))
