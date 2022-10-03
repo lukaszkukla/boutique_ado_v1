@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['https://lukaszkukla-boutique-ado.herokuapp.com', 'localhost', 'http://127.0.0.1:8001/']
+ALLOWED_HOSTS = ['lukaszkukla-boutique-ado.herokuapp.com/', 'localhost', 'http://127.0.0.1:8001/']
 
 # Application definition
 
@@ -129,7 +129,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
