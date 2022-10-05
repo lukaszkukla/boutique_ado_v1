@@ -7,10 +7,9 @@
         </div>
     </a>
     <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-        <form action="GET" class="form" action="{% url 'products' %}">
+        <form method="GET" class="form" action="{% url 'products' %}">
             <div class="input-group w-100">
-                <input type="text" class="form-control border border-black rounded-0" name="q"
-                    placeholder="Search our site">
+                <input type="text" class="form-control border border-black rounded-0" name="q" placeholder="Search our site">
                 <div class="input-group-append">
                     <button class="form-control btn btn-black border border-black rounded-0" type="submit">
                         <span class="icon">
